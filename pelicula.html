@@ -12,6 +12,27 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">WEBMOVIE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Inicio<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Populares</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+        </div>
+    </nav>
     <div class="jumbotron text-white rounded bg-dark">
         <div class="container">
             <div class="form-group row">
@@ -28,41 +49,32 @@
     </div>
 
     <div class="container">
-        <div class="row" id="actores">
+        <div class="row">
 
-        </div>
-    </div>
+            <div id="actores">
 
-
-    <div class="row mb-2">
-        <div class="col-md-6">
-            <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-primary">World</strong>
-                    <h3 class="mb-0">
-                        <a class="text-dark" href="#">Featured post</a>
-                    </h3>
-                    <div class="mb-1 text-muted">Nov 12</div>
-                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#">Continue reading</a>
-                </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-success">Design</strong>
-                    <h3 class="mb-0">
-                        <a class="text-dark" href="#">Post title</a>
-                    </h3>
-                    <div class="mb-1 text-muted">Nov 11</div>
-                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#">Continue reading</a>
-                </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+
+            <div class="form-group col-md-6">
+                <label> STATUS</label>
+                <br>
+                <p class="d-inline-block mb-2 text-primary" id="status"></p>
+                <br>
+                <br>
+                <label> LENGUAJE</label>
+                <br>
+                <p class="d-inline-block mb-2 text-primary" id="lenguaje"></p>
+                <br>
+                <br>
+                <label> budget</label>
+                <br>
+                <p class="d-inline-block mb-2 text-primary" id="budget"></p>
             </div>
+
+
+
         </div>
+
     </div>
     </div>
 
@@ -109,6 +121,10 @@
                     $("#titulo").html(result.title);
                     $("#subTitulo").html(result.overview);
                     $("#popular").html(result.vote_average);
+                    $("#status").html(result.status);
+                    $("#lenguaje").html(result.original_language);
+                    $("#budget").html(result.budget);
+
                 }
             });
         }
@@ -135,14 +151,13 @@
 
                         if (item.profile_path != null) {
 
-                            html += '<div class="col-md-2">';
-                            html += '<div class="card mb-2 box-shadow">';
-                            html += '<img class="card-img-top" src="https://image.tmdb.org/t/p/w500' + item.profile_path + '">';
+                            html += '<div class=" col-md-4">';
+                            html += '<div class="card">';
+                            html += '<a href="ActoresInfo.html?idActores=' + item.id + '"><img class="card-img-top"  src="https://image.tmdb.org/t/p/w500' + item.profile_path + '" alt="Card image cap" ></a>';
                             html += '<p class="card-text">' + item.name + '</p>';
                             html += '</div>';
                             html += '</div>';
                         }
-
                     }
 
                     $("#actores").html(html);
