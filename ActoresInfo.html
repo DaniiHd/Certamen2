@@ -27,9 +27,9 @@
                     <a class="nav-link" href="#peliculasPopulares">Populares</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            <form method="get" action="/buscar.html">
+
+                <button class="btn btn-success" type="submit">BUSCAR</button>
             </form>
         </div>
     </nav>
@@ -80,6 +80,12 @@
 
     </div>
 
+    <footer>
+        <div class="text-center">
+            Daniel y Matias
+        </div>
+    </footer>
+
     <script src="js/jquery.min.js"></script>
 
     <script>
@@ -100,6 +106,7 @@
                 url: 'https://api.themoviedb.org/3/person/' + id + '?api_key=983908bad7c5e6f26fc69d9f20b884f8&language=es-ES',
                 type: 'GET',
                 dataType: 'json',
+
                 success: function(result, status, xhr) {
 
                     var html;
